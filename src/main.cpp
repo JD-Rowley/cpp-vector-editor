@@ -69,6 +69,7 @@ using namespace std;
 
 int main() {
     char selection {};
+    int number {};
 
     vector <int> numbers {100, 200, 300};
 
@@ -100,7 +101,12 @@ int main() {
                 break;
             case 'a':
             case 'A':
-                cout << "\nAdding a number...\n" << endl;
+                cout << "What number would you like to add? ";
+
+                cin >> number;
+                
+                cout << "\nAdding " << number << "...\n" << endl;
+                numbers.push_back(number);
                 break;
             case 'm':
             case 'M':
