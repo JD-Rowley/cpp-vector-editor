@@ -104,13 +104,22 @@ int main() {
                 cout << "What number would you like to add? ";
 
                 cin >> number;
-                
+
                 cout << "\nAdding " << number << "...\n" << endl;
                 numbers.push_back(number);
                 break;
             case 'm':
             case 'M':
-                cout << "\nDisplaying vector's mean...\n" << endl;
+                cout << "\nFinding vector's mean...\n" << endl;
+
+                int total {};
+
+                for (auto num: numbers) {
+                    total += num;
+                }
+
+                cout << "The vector's mean is " << static_cast<double>(total)/numbers.size() << "." << endl;
+
                 break;
             case 's':
             case 'S':
