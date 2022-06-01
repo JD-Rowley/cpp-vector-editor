@@ -10,6 +10,8 @@ void print_numbers(vector<int> v);
 void add_number(vector<int> &v);
 void find_mean(vector<int> &v);
 void smallest_number(vector<int> &v);
+void largest_number(vector<int> &v);
+void clear_vector(vector<int> &v);
 
 int main() {
     char selection {};
@@ -44,28 +46,12 @@ int main() {
                 break;
             case 'L':
                 {
-                    cout << "\nFinding vector's largest number...\n" << endl;
-
-                    if (numbers.size() > 0) {
-                        int large_int = numbers.at(0);
-
-                        for (auto i: numbers) {
-                            if (i > large_int) {
-                                large_int = i;
-                            }
-                        }
-
-                        cout << "The vector's largest number is " << large_int << "." << endl;
-                    } else {
-                        cout << "Cannot determine largest integer - list is empty..." << endl;
-                    }
+                    largest_number(numbers);
                 }
                 break;
             case 'C':
                 {
-                    cout << "\nClearing list...\n" << endl;
-
-                    numbers.clear();
+                    clear_vector(numbers);
                 }
                 break;
             case 'Q':
@@ -151,4 +137,29 @@ void smallest_number(vector<int> &v) {
     } else {
         cout << "Cannot determine smallest integer - list is empty..." << endl;
     }
+}
+
+void largest_number(vector<int> &v) {
+    cout << "\nFinding vector's largest number...\n" << endl;
+
+    if (v.size() > 0) {
+        int large_int = v.at(0);
+
+        for (auto i: v) {
+            if (i > large_int) {
+                large_int = i;
+            }
+        }
+
+        cout << "The vector's largest number is " << large_int << "." << endl;
+    } else {
+        cout << "Cannot determine largest integer - list is empty..." << endl;
+    }
+}
+
+void clear_vector(vector<int> &v) {
+    cout << "\nClearing list...\n" << endl;
+
+    v.clear();
+
 }
