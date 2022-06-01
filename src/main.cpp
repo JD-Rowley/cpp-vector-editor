@@ -8,6 +8,8 @@ void display_menu();
 char capitalize(char a);
 void print_numbers(vector<int> v);
 void add_number(vector<int> &v);
+void find_mean(vector<int> &v);
+void smallest_number(vector<int> &v);
 
 int main() {
     char selection {};
@@ -32,38 +34,12 @@ int main() {
                 break;
             case 'M':
                 {
-                    cout << "\nFinding vector's mean...\n" << endl;
-
-                    if (numbers.size() > 0) {
-                        int total {};
-
-                        for (auto num: numbers) {
-                            total += num;
-                        }
-
-                        cout << "The vector's mean is " << static_cast<double>(total)/numbers.size() << "." << endl;
-                    } else {
-                        cout << "Unable to calculate mean - list is empty..." << endl;
-                    }
+                    find_mean(numbers);
                 }
                 break;
             case 'S':
                 {
-                    cout << "\nFinding vector's smallest number...\n" << endl;
-                    
-                    if (numbers.size() > 0) {
-                        int small_int = numbers.at(0);
-
-                        for (auto i: numbers) {
-                            if (i < small_int) {
-                                small_int = i;
-                            }
-                        }
-
-                        cout << "The vector's smallest element is " << small_int << "." << endl;
-                    } else {
-                        cout << "Cannot determine smallest integer - list is empty..." << endl;
-                    }
+                    smallest_number(numbers);
                 }
                 break;
             case 'L':
@@ -141,4 +117,38 @@ void add_number(vector<int> &v) {
 
     cout << "\nAdding " << num_added << "...\n" << endl;
     v.push_back(num_added);
+}
+
+void find_mean(vector<int> &v) {
+    cout << "\nFinding vector's mean...\n" << endl;
+
+    if (v.size() > 0) {
+        int total {};
+
+        for (auto num: v) {
+            total += num;
+        }
+
+        cout << "The vector's mean is " << static_cast<double>(total)/v.size() << "." << endl;
+    } else {
+        cout << "Unable to calculate mean - list is empty..." << endl;
+    }
+}
+
+void smallest_number(vector<int> &v) {
+    cout << "\nFinding vector's smallest number...\n" << endl;
+    
+    if (v.size() > 0) {
+        int small_int = v.at(0);
+
+        for (auto i: v) {
+            if (i < small_int) {
+                small_int = i;
+            }
+        }
+
+        cout << "The vector's smallest element is " << small_int << "." << endl;
+    } else {
+        cout << "Cannot determine smallest integer - list is empty..." << endl;
+    }
 }
