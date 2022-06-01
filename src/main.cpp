@@ -6,45 +6,30 @@ using namespace std;
 // Function prototypes
 void display_menu();
 char capitalize(char a);
+void print_numbers(vector<int> v);
+void add_number(vector<int> &v);
 
 int main() {
     char selection {};
-    int number {};
 
     vector <int> numbers {};
 
     do {
         display_menu();
+
         cin >> selection;
 
-        switch (selection) {
-            case 'p':
+        switch (capitalize(selection)) {
             case 'P':
                 {
-                    cout << "\nPrinting numbers...\n" << endl;
-                    if (numbers.size() > 0) {
-                        cout << "[";
-                        for (auto num: numbers) {
-                            cout << " " << num << " ";
-                        }
-                        cout << "]\n" << endl;
-                    } else {
-                        cout << "[] - the list is empty\n" << endl;
-                    }
+                    print_numbers(numbers);
                 }
                 break;
-            case 'a':
             case 'A':
                 {
-                    cout << "What number would you like to add? ";
-
-                    cin >> number;
-
-                    cout << "\nAdding " << number << "...\n" << endl;
-                    numbers.push_back(number);
+                    add_number(numbers);
                 }
                 break;
-            case 'm':
             case 'M':
                 {
                     cout << "\nFinding vector's mean...\n" << endl;
@@ -62,7 +47,6 @@ int main() {
                     }
                 }
                 break;
-            case 's':
             case 'S':
                 {
                     cout << "\nFinding vector's smallest number...\n" << endl;
@@ -82,7 +66,6 @@ int main() {
                     }
                 }
                 break;
-            case 'l':
             case 'L':
                 {
                     cout << "\nFinding vector's largest number...\n" << endl;
@@ -102,7 +85,6 @@ int main() {
                     }
                 }
                 break;
-            case 'c':
             case 'C':
                 {
                     cout << "\nClearing list...\n" << endl;
@@ -110,14 +92,13 @@ int main() {
                     numbers.clear();
                 }
                 break;
-            case 'q':
             case 'Q':
                 cout << "\nGoodbye..." << endl;
                 break;
             default:
                 cout << "\nInvalid entry - please try again...\n" << endl;
         }
-    } while (selection != 'q' && selection != 'Q');
+    } while (capitalize(selection) != 'Q');
     
     cout << endl;
     return 0;
@@ -133,5 +114,31 @@ void display_menu() {
     cout << "Q - Quit" << endl;
 
     cout << "\nEnter your choice: ";
+}
 
+char capitalize(char a) {
+    return toupper(a);
+}
+
+void print_numbers(vector<int> v) {
+    cout << "\nPrinting numbers...\n" << endl;
+    if (v.size() > 0) {
+        cout << "[";
+        for (auto num: v) {
+            cout << " " << num << " ";
+        }
+        cout << "]\n" << endl;
+    } else {
+        cout << "[] - the list is empty\n" << endl;
+    }
+}
+
+void add_number(vector<int> &v) {
+    int num_added {};
+    cout << "What number would you like to add? ";
+
+    cin >> num_added;
+
+    cout << "\nAdding " << num_added << "...\n" << endl;
+    v.push_back(num_added);
 }
